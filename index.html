@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; padding: 3rem 1rem; }
+    .box { max-width: 360px; width: 100%; }
+    input { width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; margin-top: 6px; }
+    button { margin-top: 12px; width: 100%; padding: 10px; font-size: 16px; background: #333; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    #error { color: red; font-size: 13px; margin-top: 6px; }
+    #content { display: none; }
+  </style>
+</head>
+<body>
+  <div class="box">
+
+    <!-- Форма входа -->
+    <div id="login">
+      <h2>Введите пароль</h2>
+      <input type="password" id="pwd" placeholder="Пароль" />
+      <div id="error"></div>
+      <button onclick="checkPassword()">Войти</button>
+    </div>
+
+    <!-- Защищённый контент -->
+    <div id="content">
+      <h1>Привет!</h1>
+      <p>Это ваш текст, который увидят только те, кто знает пароль.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const PASSWORD = 'ваш_пароль'; // ← поменяйте здесь
+
+    document.getElementById('pwd').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function checkPassword() {
+      if (document.getElementById('pwd').value === PASSWORD) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        document.getElementById('error').textContent = 'Неверный пароль';
+        document.getElementById('pwd').value = '';
+      }
+    }
+  </script>
+</body>
+</html>
