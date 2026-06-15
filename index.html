@@ -18,7 +18,7 @@
     <!-- Форма входа -->
     <div id="login">
       <h2>Введите пароль</h2>
-      <input type="password" id="pwd" placeholder="Пароль" />
+      <input type="text" id="pwd" placeholder="DD.MM.YYYY" />
       <div id="error"></div>
       <button onclick="checkPassword()">Войти</button>
     </div>
@@ -32,14 +32,14 @@
   </div>
 
   <script>
-    const PASSWORD = 'ваш_пароль'; // ← поменяйте здесь
+    const PASSWORDS = ['12.07.2024', '12072024']; // ← допустимые пароли
 
     document.getElementById('pwd').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') checkPassword();
     });
 
     function checkPassword() {
-      if (document.getElementById('pwd').value === PASSWORD) {
+      if (PASSWORDS.includes(document.getElementById('pwd').value)) {
         document.getElementById('login').style.display = 'none';
         document.getElementById('content').style.display = 'block';
       } else {
